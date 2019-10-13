@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1074578456015",
+    "firebase_url": "https://realtimetextrecognition.firebaseio.com",
+    "project_id": "realtimetextrecognition",
+    "storage_bucket": "realtimetextrecognition.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074578456015:android:8e4c5dcb312185008326ba",
+        "android_client_info": {
+          "package_name": "usama.utech.realtimetextrecogniitionusingvisionapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074578456015-d73422t19nq8nrkkacfi8h9irt51enbk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "usama.utech.realtimetextrecogniitionusingvisionapi",
+            "certificate_hash": "9ebfbaf96b856bdba6dc80cb503ca3b3a06ccc22"
+          }
+        },
+        {
+          "client_id": "1074578456015-c793eqn69g6elilqm4785vfkektko9th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPdpPnnORjR99h5naNwMn1ViZ79P37oqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074578456015-c793eqn69g6elilqm4785vfkektko9th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
