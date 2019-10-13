@@ -8,6 +8,7 @@ import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if (!textRecognizer.isOperational()) {
-            Log.w("MainActivity", "Detector dependencies are not yet available");
+            Toast.makeText(this, "Detector dependencies are not yet available", Toast.LENGTH_SHORT).show();
+
         } else {
 
             cameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
