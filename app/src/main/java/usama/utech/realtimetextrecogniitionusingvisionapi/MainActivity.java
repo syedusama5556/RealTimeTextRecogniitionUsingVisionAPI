@@ -3,7 +3,7 @@ package usama.utech.realtimetextrecogniitionusingvisionapi;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
