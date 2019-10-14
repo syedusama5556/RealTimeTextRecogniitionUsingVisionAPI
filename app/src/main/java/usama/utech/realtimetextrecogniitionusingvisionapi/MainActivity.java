@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
@@ -54,13 +55,17 @@ public class MainActivity extends AppCompatActivity {
         cameraView = (SurfaceView) findViewById(R.id.surface_view);
         textView = (TextView) findViewById(R.id.text_view);
 
+
+       
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+
+        BoxDetector boxDetector = new BoxDetector(textRecognizer, 900, 450);
         if (!textRecognizer.isOperational()) {
             Toast.makeText(this, "Detector dependencies are not yet available", Toast.LENGTH_SHORT).show();
 
         } else {
 
-            cameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
+            cameraSource = new CameraSource.Builder(getApplicationContext(), boxDetector)
                     .setFacing(CameraSource.CAMERA_FACING_BACK)
                     .setRequestedPreviewSize(1280, 1024)
                     .setRequestedFps(2.0f)
@@ -95,14 +100,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
+            boxDetector.setProcessor(new Detector.Processor() {
                 @Override
                 public void release() {
 
                 }
 
                 @Override
-                public void receiveDetections(Detector.Detections<TextBlock> detections) {
+                public void receiveDetections(Detector.Detections detections) {
 
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
                     if(items.size() != 0)
@@ -123,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
+
         }
     }
 }
