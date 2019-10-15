@@ -3,10 +3,10 @@ package usama.utech.realtimetextrecogniitionusingvisionapi;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.text_view);
 
 
-       
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
 
-        BoxDetector boxDetector = new BoxDetector(textRecognizer, 900, 450);
+        //adjest height and weidth
+        BoxDetector boxDetector = new BoxDetector(textRecognizer, 850, 600);
         if (!textRecognizer.isOperational()) {
             Toast.makeText(this, "Detector dependencies are not yet available", Toast.LENGTH_SHORT).show();
 
@@ -110,14 +112,12 @@ public class MainActivity extends AppCompatActivity {
                 public void receiveDetections(Detector.Detections detections) {
 
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
-                    if(items.size() != 0)
-                    {
+                    if (items.size() != 0) {
                         textView.post(new Runnable() {
                             @Override
                             public void run() {
                                 StringBuilder stringBuilder = new StringBuilder();
-                                for(int i =0;i<items.size();++i)
-                                {
+                                for (int i = 0; i < items.size(); ++i) {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
                                     stringBuilder.append("\n");
@@ -131,5 +131,30 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+    }
+
+
+
+    public static int[] deleteNth(int[] elements, int maxOccurrences) {
+
+        ArrayList<Integer> tempArray = new ArrayList<>();
+
+        int lenghtis = elements.length;
+        for (int i = 0; i < lenghtis; i++) {
+
+            int selectedElement = elements[i];
+
+            if (i==0){
+                tempArray.add(selectedElement);
+            }else if (i>0){
+
+                System.out.println("ans is "+ tempArray.indexOf(selectedElement));
+            }
+
+        }
+
+
+
+        return null;
     }
 }
